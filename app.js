@@ -14,11 +14,17 @@ var Article = connection.define("article", {
     content: Sequelize.STRING
 });
 
+// connection.sync().then(function() {
+//     Article.create({
+//         title: 'Demo title',
+//         content: 'Sample body which can be very large as the type mentioned is TEXT'
+//     });
+// });
+
 connection.sync().then(function() {
-    Article.create({
-        title: 'Demo title',
-        body: 'Sample body which can be very large as the type mentioned is TEXT'
-    });
+    Article.findById(3).then(function(article){
+        console.log(article.dataValues);
+    })
 });
 
 //var Sequelize = require("sequelize");
