@@ -13,19 +13,21 @@ module.exports.select_from_table = function(TableVar, the_id) {
     })
 }
 
-module.exports.update_table_record = function(TableVar){
+module.exports.update_table_record = function(TableVar, record_id){
     TableVar.update(
         {
             title:'The updated title',
         },
         {
-            where: {_id: 1}
+            where: {id: record_id}
         }
     )
-    .success(result => 
-    console.log(result)
-    )
-    .error(err =>
-    console.log(err)
-    )
+};
+
+module.exports.delete_table_record = function(TableVar, record_id){
+    TableVar.destroy({
+        where: {
+            id:record_id
+        }
+    })
 };
