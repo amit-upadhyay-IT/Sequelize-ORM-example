@@ -30,4 +30,11 @@ module.exports.delete_table_record = function(TableVar, record_id){
             id:record_id
         }
     })
+    .then(function(rowDeleted){ // rowDeleted will return number of rows deleted
+    if(rowDeleted === 1){
+        console.log('Deleted successfully');
+    }
+    }, function(err){
+        console.log(err); 
+    });
 };
