@@ -7,27 +7,33 @@ var connection = new Sequelize("Exponentia_Dev", "Exponentia", "Exponentia~", {
 });
 
 // make sure you have created the database using pg Admin III 
-//var sequelize = new Sequelize("postgres://huxutede:CqOxnhGdwEiEhtdmh7y54YgSG3ncnRq3@babar.elephantsql.com:5432/huxutede");
+// var sequelize = new Sequelize("postgres://huxutede:CqOxnhGdwEiEhtdmh7y54YgSG3ncnRq3@babar.elephantsql.com:5432/huxutede");
 
-var Article = connection.define("article", {
+var table_name = "StoryTable";
+
+var TableVar = connection.define(table_name, {
     title: Sequelize.STRING,
     content: Sequelize.STRING
 });
 
+var sequelizeFile = require('./sequelizefile.js');
+
+connection.sync().then(function() {
+    sequelizeFile.select_from_table(TableVar, 2);
+});
+
+
+
+//----------------------------------------
 // connection.sync().then(function() {
-//     Article.create({
+//     TableVar.create({
 //         title: 'Demo title',
 //         content: 'Sample body which can be very large as the type mentioned is TEXT'
 //     });
 // });
 
-connection.sync().then(function() {
-    Article.findById(3).then(function(article){
-        console.log(article.dataValues);
-    })
-});
-
-//var Sequelize = require("sequelize");
-// var connection = new Sequelize("10.250.18.50", "exponentia_readonly", "exponentia_readonly~", {
-//     dialect: 'mysql'|'sqlite'|'postgres'|'mssql'
+// connection.sync().then(function() {
+//     TableVar.findById(3).then(function(article){
+//         console.log(article.dataValues);
+//     })
 // });
