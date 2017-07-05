@@ -19,21 +19,6 @@ var TableVar = connection.define(table_name, {
 var sequelizeFile = require('./sequelizefile.js');
 
 connection.sync().then(function() {
-    sequelizeFile.select_from_table(TableVar, 2);
+    sequelizeFile.delete_table_record(TableVar, 3);
+    //sequelizeFile.update_table_record(TableVar, record_id);
 });
-
-
-
-//----------------------------------------
-// connection.sync().then(function() {
-//     TableVar.create({
-//         title: 'Demo title',
-//         content: 'Sample body which can be very large as the type mentioned is TEXT'
-//     });
-// });
-
-// connection.sync().then(function() {
-//     TableVar.findById(3).then(function(article){
-//         console.log(article.dataValues);
-//     })
-// });
