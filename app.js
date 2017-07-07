@@ -4,7 +4,7 @@ var ted = require("tedious");
 
 var connection = new Sequelize("Exponentia_Dev", "Exponentia", "Exponentia~", {
     host:"10.250.18.50",
-    dialect: 'tedious'
+    dialect: 'mssql'
 });
 
 /// var connection = new Sequal_auto("Exponentia_Dev", "Exponentia", "Exponentia~", {
